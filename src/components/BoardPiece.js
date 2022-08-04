@@ -1,47 +1,51 @@
-import React, { useContext } from "react";
-import Store from "../Store";
-import { Context } from "../Store";
+
+import React, { useContext } from 'react'
+import { Context } from '../Store';
 
 export default function BoardPiece(props) {
-  const [gameBoard, setGameBoard] = useContext(Context);
 
-  const { originalPosition, up, down, left, right } = props;
+    const {position, up, down, left, right } = props;
 
-  const handleClick = (e) => {
-    console.log('gameBoard: ', gameBoard);
+    const [ gameBoard, setGameBoard ] = useContext(Context);
 
-    if(gameBoard[up] && gameBoard[up].props.originalPosition === null){
-        
-        console.log('inside if statement');
-        const placeholder = originalPosition;
-        // const placeHolder = e.target;
-        // console.log(originalPosition)
-
+    const checkIfMovable = () =>{
+      if(gameBoard[up] === null){
+        return {canMove: true, direction: up};
+      }else if(gameBoard[down] === null){
+        return {canMove: true, direction: down};
+      }else if( gameBoard[left] === null){
+        return {canMove: true, direction: left};
+      }else if(gameBoard[right] === null){
+        return {canMove: true, direction: right};
+      }else{
+        return {canMove: false, direction: null};
+      }
     }
 
-    // if (
-    //   (gameBoard[up] && gameBoard[up].props.originalPosition === null) ||
-    //   (gameBoard[down] && gameBoard[down].props.originalPosition === null) ||
-    //   (gameBoard[left] && gameBoard[left].props.originalPosition === null) ||
-    //   (gameBoard[right] && gameBoard[right].props.originalPosition === null)
-    // ) {
-    //   //Do this if gamePiece is movable
-    //   console.log('movable')
+    const handleMove = e => {
 
-    //   const placeHolder = e.target;
-    //   console.log(placeHolder);
-    // } else {
-    //   //This means game piece is not movable
-    //   console.log("not movable");
-    // }
-  };
+        const canMove = checkIfMovable();
+        
+        if(canMove.canMove){
+          console.log('movable')
+          let placeHolder = parseInt(e.target.textContent);
 
-  return (
-    <div
-      onClick={handleClick}
-      className="flex justify-center items-center w-125 h-125 border border-black hover:border-red-500"
-    >
-      {originalPosition}
-    </div>
-  );
+          const tempGameBoard = [...gameBoard];
+          tempGameBoard[position] = null;
+          tempGameBoard[canMove.direction] = placeHolder;
+          setGameBoard(tempGameBoard);;
+
+        }else{
+          console.log('not movable');
+        }
+    }
+
+    return (
+            <div
+              onClick={handleMove}
+              className="flex justify-center items-center w-125 h-125 border border-black hover:border-red-500"
+            >
+              {gameBoard[position]}
+            </div>
+          );
 }

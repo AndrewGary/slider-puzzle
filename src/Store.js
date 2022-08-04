@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-import { solution } from "./utils/utils";
 
 export const Context = React.createContext();
 
 const Store = ({ children }) => {
-    const [test, setTest] = useState(solution);
+    const [gameBoard, setGameBoard] = useState([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, null]);
 
     return (
-        <Context.Provider value={[test, setTest]}>{children}</Context.Provider>
+            <Context.Provider value={[gameBoard, setGameBoard]}>{children}</Context.Provider>
     )
 }
 

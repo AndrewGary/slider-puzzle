@@ -1,24 +1,30 @@
-import React, {useEffect, useState, useContext} from 'react'
-import BoardPiece from './BoardPiece'
+import React, { useEffect, useContext } from 'react'
 import { solution } from '../utils/utils';
 import GameControls from './GameControls';
 import { Context } from '../Store';
+import { winningArray } from '../utils/utils';
 
 export default function GameBoard() {
-  
-    const [gameBoard, setGameBoard ] = useState(solution);
-    const [test, setTest] = useContext(Context);
-    console.log('test: ', test);
-    console.log('gameBoard: ', gameBoard);
+
+    const checkIfGameIsOver = () => {
+        for(let i = 0; i < 16; i++){
+          if(gameBoard[i] !== winningArray[i]){
+            return false
+          }
+        }
+      return true;
+    }
+
+    const [gameBoard, setGameBoard] = useContext(Context);
 
     useEffect(() => {
-
-    }, [])
+        console.log('checkIfGameIsOver() : ', checkIfGameIsOver())
+    }, [gameBoard])
   
     return (
         <div className='flex flex-col w-full h-screen items-center justify-center border border-red-500'>
             <div className='flex flex-wrap w-500 h-500 '>
-                {test.map(BoardPiece => {
+                {solution.map(BoardPiece => {
                     return BoardPiece
                 })}
             </div>
