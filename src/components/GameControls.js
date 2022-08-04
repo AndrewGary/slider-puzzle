@@ -3,9 +3,11 @@ import { Context } from '../Store';
 
 export default function GameControls(props) {
 
+    const {setGameActive} = props;
+
     const [gameBoard, setGameBoard ] = useContext(Context);
 
-    const handleStartGame = () => {
+    const handleStartGame = async () => {
         const scrambledBoard = [];
 
         while(scrambledBoard.length < 16){
@@ -20,6 +22,7 @@ export default function GameControls(props) {
 
         scrambledBoard[index] = null;
 
+        setGameActive(true);
         setGameBoard(scrambledBoard)
     }
 

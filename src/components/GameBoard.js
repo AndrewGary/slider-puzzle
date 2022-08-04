@@ -1,10 +1,17 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect, useContext, useState } from 'react'
 import { solution } from '../utils/utils';
 import GameControls from './GameControls';
 import { Context } from '../Store';
 import { winningArray } from '../utils/utils';
+import Timer from './Timer';
 
-export default function GameBoard() {
+export default function GameBoard(props) {
+
+    const { gameActive, setGameActive } = props;
+    
+    const [isActive, setIsActive] = useState(false);
+    const [isPaused, setIsPaused] = useState(true);
+    const [time, setTime] = useState(0);
 
     const checkIfGameIsOver = () => {
         for(let i = 0; i < 16; i++){
@@ -18,7 +25,13 @@ export default function GameBoard() {
     const [gameBoard, setGameBoard] = useContext(Context);
 
     useEffect(() => {
-        console.log('checkIfGameIsOver() : ', checkIfGameIsOver())
+        console.log('gameActive has changed to: ', gameActive);
+    }, [gameActive])
+
+    useEffect(() => {
+        if(checkIfGameIsOver() === true){
+            setGameActive(false);
+        }
     }, [gameBoard])
   
     return (
@@ -28,7 +41,11 @@ export default function GameBoard() {
                     return BoardPiece
                 })}
             </div>
-            <GameControls setGameBoard={setGameBoard}/>
+            <div>
+                <GameControls setGameBoard={setGameBoard} setGameActive={setGameActive} gameActive={gameActive}/>
+                <Timer gameActive={gameActive}/>
+                <button onClick={() => setGameBoard([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, null, 14])}>Solve</button>
+            </div>
         </div>
   )
 }
