@@ -3,9 +3,9 @@ import React, { useState, useEffect } from 'react';
 
 const Timer = props => {
     
-    const {gameActive, setGameActive } = props;
+    const {gameActive, setGameActive, time, setTime } = props;
 
-    const [ time, setTime ] = useState(0);
+    // const [ time, setTime ] = useState(0);
 
     useEffect(() => {
         let interval = null;

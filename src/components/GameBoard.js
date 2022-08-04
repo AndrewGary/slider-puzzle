@@ -7,11 +7,7 @@ import Timer from './Timer';
 
 export default function GameBoard(props) {
 
-    const { gameActive, setGameActive } = props;
-    
-    const [isActive, setIsActive] = useState(false);
-    const [isPaused, setIsPaused] = useState(true);
-    const [time, setTime] = useState(0);
+    const { gameActive, setGameActive, time, setTime } = props;
 
     const checkIfGameIsOver = () => {
         for(let i = 0; i < 16; i++){
@@ -42,8 +38,8 @@ export default function GameBoard(props) {
                 })}
             </div>
             <div>
-                <GameControls setGameBoard={setGameBoard} setGameActive={setGameActive} gameActive={gameActive}/>
-                <Timer gameActive={gameActive}/>
+                <GameControls setGameBoard={setGameBoard} setGameActive={setGameActive} gameActive={gameActive} time={time} setTime={setTime}/>
+                <Timer gameActive={gameActive} time={time} setTime={setTime}/>
                 <button onClick={() => setGameBoard([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, null, 14])}>Solve</button>
             </div>
         </div>

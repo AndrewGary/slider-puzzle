@@ -6,18 +6,12 @@ import Store from './Store';
 function App() {
 
   const [gameActive, setGameActive ] = useState(false);
-
-  const [isActive, setIsActive] = useState(false);
-  const [isPaused, setIsPaused] = useState(true);
   const [time, setTime] = useState(0);
 
-  const handleStart = () => {
-    
-  }
 
   return (
     <Store>
-      <GameBoard gameActive={gameActive} setGameActive={setGameActive}/>
+      <GameBoard gameActive={gameActive} setGameActive={setGameActive} time={time} setTime={setTime}/>
     </Store>
   );
 }

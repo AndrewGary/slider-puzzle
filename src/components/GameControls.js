@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Context } from "../Store";
 
 export default function GameControls(props) {
-  const { setGameActive, gameActive } = props;
+  const { setGameActive, gameActive, time, setTime } = props;
 
   const [gameBoard, setGameBoard] = useContext(Context);
 
@@ -26,7 +26,25 @@ export default function GameControls(props) {
   };
 
   const handleRestartGame = () => {
-    console.log('restart game clicked');
+    const scrambledBoard = [];
+
+    while (scrambledBoard.length < 16) {
+      const newNumber = Math.floor(Math.random() * 16);
+
+      if (!scrambledBoard.includes(newNumber)) {
+        scrambledBoard.push(newNumber);
+      }
+    }
+
+    const index = scrambledBoard.indexOf(15);
+
+    scrambledBoard[index] = null;
+
+    setGameBoard(scrambledBoard);
+    
+    setTime(0);
+
+
   }
 
   return (
