@@ -1,9 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import wolf from "../Wolf.png";
 
 
 
 const PhotoTest = () => {
+
+    const [ base64String, setBase64String ] = useState('');
+    const [ imageTiles, setImageTiles ] = useState([]);
 
     const encodeImageAsURL = image => {
         
@@ -14,7 +17,8 @@ const PhotoTest = () => {
         .then(blob => new Promise((resolve, reject) => {
             const reader = new FileReader();
             reader.onloadend = function() {
-                console.log('RESULT: ', reader.result)
+                // console.log('RESULT: ', reader.result)
+                setBase64String(reader.result);
             }
             reader.readAsDataURL(blob);
 
@@ -29,17 +33,58 @@ const PhotoTest = () => {
         // }
         // reader.readAsDataURL(image);
     }
+    useEffect(() => {
+        // console.log('base64String: ', base64String);
+
+        var canvas = document.createElement('canvas'),
+        ctx = canvas.getContext('2d'),
+        parts = [],
+        img = new Image();
+
+    img.onload = split_4;
+
+    function split_4() {
+      var w2 = img.width / 2,
+          h2 = img.height / 2;
+
+      for(var i=0; i<4; i++) {
+        var x = (-w2*i) % (w2*2),
+            y = (h2*i)<=h2? 0 : -h2 ;
+
+        canvas.width = w2;
+        canvas.height = h2;
+
+        ctx.drawImage(this, x, y, w2*2, h2*2);
+
+        parts.push( canvas.toDataURL() );
+
+        // for test div
+        var slicedImage = document.createElement('img')
+        slicedImage.src = parts[i];
+      }
+
+      setImageTiles(parts);
+
+    }
+
+    img.src = base64String;
+
+    }, [base64String])
 
     useEffect(() => {
         console.log('Starting at top of useEffect');
 
         
-        encodeImageAsURL(wolf);
+        setBase64String(encodeImageAsURL(wolf));
+        // base64String = encodeImageAsURL(wolf);
+        // console.log('base64String: ', base64String)
     }, [])
 
     return (
         <div>
-            idk
+            {imageTiles.map(tile => {
+                return <img src={tile} />
+            })}
         </div>
     )
 }
