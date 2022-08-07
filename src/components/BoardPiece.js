@@ -9,6 +9,8 @@ export default function BoardPiece(props) {
     const [ gameBoard, setGameBoard ] = useContext(Context);
 
     const checkIfMovable = () =>{
+
+      
       if(gameBoard[up] === null){
         return {canMove: true, direction: up};
       }else if(gameBoard[down] === null){

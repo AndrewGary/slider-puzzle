@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import GameBoard from './components/GameBoard';
 import Store from './Store';
-import PhotoTest from './components/PhotoTest';
+import Photo2 from './components/Photo2';
 
 function App() {
 
@@ -12,7 +12,8 @@ function App() {
 
   return (
     <Store>
-      <PhotoTest />
+      {/* <Photo /> */}
+      <Photo2 />
       <GameBoard gameActive={gameActive} setGameActive={setGameActive} time={time} setTime={setTime}/>
     </Store>
   );
