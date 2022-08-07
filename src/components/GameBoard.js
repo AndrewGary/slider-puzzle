@@ -4,6 +4,7 @@ import GameControls from './GameControls';
 import { Context } from '../Store';
 import { winningArray } from '../utils/utils';
 import Timer from './Timer';
+import { cutImageUp } from '../utils/utils';
 
 export default function GameBoard(props) {
 
@@ -29,6 +30,11 @@ export default function GameBoard(props) {
             setGameActive(false);
         }
     }, [gameBoard])
+
+    useEffect(() => {
+        const idk = cutImageUp();
+        setGameBoard(idk);
+    }, [])
   
     return (
         <div className='flex flex-col w-full h-screen items-center justify-center border border-red-500'>

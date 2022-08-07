@@ -8,6 +8,7 @@ export default function GameControls(props) {
 
   const handleStartGame = async () => {
     const scrambledBoard = [];
+    const returnArray = [];
 
     while (scrambledBoard.length < 16) {
       const newNumber = Math.floor(Math.random() * 16);
@@ -17,16 +18,26 @@ export default function GameControls(props) {
       }
     }
 
-    const index = scrambledBoard.indexOf(15);
+    for(let i = 0; i < scrambledBoard.length; i++){
+        returnArray.push(gameBoard[scrambledBoard[i]])
+    }
 
-    scrambledBoard[index] = null;
+    console.log('returnArray: ', returnArray);
+
+    // console.log('returnArray: ', returnArray);
+    // console.log('gameBoard: ', gameBoard)
+
+    // const index = scrambledBoard.indexOf(15);
+
+    // scrambledBoard[index] = null;
 
     setGameActive(true);
-    setGameBoard(scrambledBoard);
+    setGameBoard(returnArray);
   };
 
   const handleRestartGame = () => {
     const scrambledBoard = [];
+    const returnArray = [];
 
     while (scrambledBoard.length < 16) {
       const newNumber = Math.floor(Math.random() * 16);
@@ -36,11 +47,15 @@ export default function GameControls(props) {
       }
     }
 
-    const index = scrambledBoard.indexOf(15);
+    for(let i = 0; i < scrambledBoard.length; i++){
+        returnArray.push(gameBoard[scrambledBoard[i]])
+    }
 
-    scrambledBoard[index] = null;
+    // const index = scrambledBoard.indexOf(15);
 
-    setGameBoard(scrambledBoard);
+    // scrambledBoard[index] = null;
+
+    setGameBoard(returnArray);
     
     setTime(0);
 
