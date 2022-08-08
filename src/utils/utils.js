@@ -1,5 +1,10 @@
 import BoardPiece from "../components/BoardPiece";
 import wolf from '../images/Wolf.png';
+import cat from '../images/Cat.png';
+import colorful from '../images/Colorful.png';
+import samurai from '../images/Samurai.png';
+
+export const arrayOfImages = [wolf, cat, colorful, samurai];
 
 export const checkIfGameIsOver = (gameBoard) => {
   for(let i = 0; i < 16; i++){

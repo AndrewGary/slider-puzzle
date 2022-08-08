@@ -7,11 +7,16 @@ import { cutImageUp } from "../utils/utils";
 import wolf from "../images/Wolf.png";
 import { checkIfGameIsOver } from "../utils/utils";
 import Title from "./Title";
+import { arrayOfImages } from "../utils/utils";
 
 export default function GameBoard(props) {
   const { gameActive, setGameActive, time, setTime } = props;
 
   const [gameBoard, setGameBoard] = useContext(Context);
+
+  const handleImageSelection = e => {
+    console.log(this);
+  }
 
   useEffect(() => {
     if (checkIfGameIsOver(gameBoard) === true) {
@@ -33,7 +38,11 @@ export default function GameBoard(props) {
             return BoardPiece;
           })}
         </div>
-        <img src={wolf} alt="wolf" />
+        <div className="flex flex-wrap w-500, h-500 justify-evenly items-center">
+            {arrayOfImages.map(image => {
+                return <img onClick={handleImageSelection} className="w-2/5 h-2/5" src={image}  />
+            })}
+        </div>
       </div>
       <div>
         <GameControls
