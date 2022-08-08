@@ -9,13 +9,18 @@ export default function BoardPiece(props) {
     const [ gameBoard, setGameBoard ] = useContext(Context);
 
     const checkIfMovable = () =>{
+
       if(gameBoard[up] === null){
+        // console.log('can move up')
         return {canMove: true, direction: up};
       }else if(gameBoard[down] === null){
+        // console.log('can move down')
         return {canMove: true, direction: down};
       }else if( gameBoard[left] === null){
+        // console.log('can move left')
         return {canMove: true, direction: left};
       }else if(gameBoard[right] === null){
+        // console.log('can move right')
         return {canMove: true, direction: right};
       }else{
         return {canMove: false, direction: null};
@@ -27,8 +32,7 @@ export default function BoardPiece(props) {
         const canMove = checkIfMovable();
         
         if(canMove.canMove){
-          console.log('movable')
-          let placeHolder = parseInt(e.target.textContent);
+          let placeHolder = gameBoard[position];
 
           const tempGameBoard = [...gameBoard];
           tempGameBoard[position] = null;

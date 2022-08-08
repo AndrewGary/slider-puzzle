@@ -8,7 +8,6 @@ function App() {
   const [gameActive, setGameActive ] = useState(false);
   const [time, setTime] = useState(0);
 
-
   return (
     <Store>
       <GameBoard gameActive={gameActive} setGameActive={setGameActive} time={time} setTime={setTime}/>

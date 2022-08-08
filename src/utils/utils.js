@@ -1,5 +1,14 @@
 import BoardPiece from "../components/BoardPiece";
-import wolf from '../Wolf.png';
+import wolf from '../images/Wolf.png';
+
+export const checkIfGameIsOver = (gameBoard) => {
+  for(let i = 0; i < 16; i++){
+    if(gameBoard[i] !== winningArray[i]){
+      return false
+    }
+  }
+return true;
+}
 
 export const cutImageUp = (imageToCut) => {
 

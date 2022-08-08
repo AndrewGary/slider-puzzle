@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Context } from "../Store";
 
 export default function GameControls(props) {
-  const { setGameActive, gameActive, time, setTime } = props;
+  const { setGameActive, gameActive, setTime } = props;
 
   const [gameBoard, setGameBoard] = useContext(Context);
 
@@ -24,13 +24,6 @@ export default function GameControls(props) {
 
     console.log('returnArray: ', returnArray);
 
-    // console.log('returnArray: ', returnArray);
-    // console.log('gameBoard: ', gameBoard)
-
-    // const index = scrambledBoard.indexOf(15);
-
-    // scrambledBoard[index] = null;
-
     setGameActive(true);
     setGameBoard(returnArray);
   };
@@ -50,10 +43,6 @@ export default function GameControls(props) {
     for(let i = 0; i < scrambledBoard.length; i++){
         returnArray.push(gameBoard[scrambledBoard[i]])
     }
-
-    // const index = scrambledBoard.indexOf(15);
-
-    // scrambledBoard[index] = null;
 
     setGameBoard(returnArray);
     
