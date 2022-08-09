@@ -1,8 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../Store";
 
 export default function GameControls(props) {
-  const { setGameActive, gameActive, setTime, setSelectedImage, selectedImage, gameMessage, setGameMessage } = props;
+  const { setGameActive, gameActive, setTime, setSelectedImage, selectedImage, gameMessage, setGameMessage, time } = props;
 
   const [gameBoard, setGameBoard] = useContext(Context);
 
@@ -57,11 +57,20 @@ export default function GameControls(props) {
     
   }
 
+  useEffect(() => {
+    if(selectedImage !== null && !gameActive && time === 0){
+      setGameMessage('Image will show up once you start game')
+    }
+    if(selectedImage !== null && gameActive){
+      setGameMessage('');
+    }
+  }, [selectedImage, gameActive])
+
   return (
     <div className="flex flex-col w-full items-center">
       <h2 className="flex justify-center mb-4 text-3xl text-red-500">{gameMessage}</h2>
       {
-        gameActive ?
+        time > 0 ?
         <button
           onClick={handleRestartGame}
           className="border border-gray-300 rounded-md px-20 py-10 text-4xl hover:border-gray-500 w-2/5"

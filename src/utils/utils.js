@@ -6,14 +6,7 @@ import samurai from '../images/Samurai.png';
 
 export const arrayOfImages = [wolf, cat, colorful, samurai];
 
-export const checkIfGameIsOver = (gameBoard) => {
-  for(let i = 0; i < 16; i++){
-    if(gameBoard[i] !== winningArray[i]){
-      return false
-    }
-  }
-return true;
-}
+
 
 export const cutImageUp = (index) => {
 
@@ -42,7 +35,7 @@ export const cutImageUp = (index) => {
   }
   splitImage[15] = null;
 }
-//testing
+
 const image = new Image();
   image.onload = onloadFunction;
   image.src = arrayOfImages[index];
@@ -50,6 +43,22 @@ const image = new Image();
 };
 
 export const winningArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, null]
+
+export const winningArrays = [];
+
+for(let i = 0; i < arrayOfImages.length; i++){
+  const returnArray = cutImageUp(i);
+  winningArrays.push(returnArray);
+}
+
+export const checkIfGameIsOver = (gameBoard, index) => {
+  for(let i = 0; i < 16; i++){
+    if(gameBoard[i] !== winningArrays[index][i]){
+      return false
+    }
+  }
+return true;
+}
 
 export const winTest = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, null, 14]
 

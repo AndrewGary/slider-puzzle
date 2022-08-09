@@ -2,7 +2,6 @@ import React from 'react'
 
 export default function Title(props) {
     const { selectedImage } = props;
-    console.log('title selectedImage: ', selectedImage);
   return (
     <div>
         <h1 className='text-9xl border-b border-black'>Slider Puzzle</h1>
