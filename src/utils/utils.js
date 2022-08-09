@@ -4,7 +4,6 @@ import cat from '../images/Cat.png';
 import colorful from '../images/Colorful.png';
 import samurai from '../images/Samurai.png';
 
-// export const arrayOfImages = [{img: wolf, index: 0}, {img: cat, index: 1}, {img: colorful, index: 2}, {img: samurai, index: 3}];
 export const arrayOfImages = [wolf, cat, colorful, samurai];
 
 export const checkIfGameIsOver = (gameBoard) => {

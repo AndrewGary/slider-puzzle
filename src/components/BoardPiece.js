@@ -1,12 +1,16 @@
 
-import React, { useContext } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Context } from '../Store';
+import LoadingSpinner from './LoadingSpinner';
 
 export default function BoardPiece(props) {
 
     const {position, up, down, left, right } = props;
 
     const [ gameBoard, setGameBoard ] = useContext(Context);
+    const [ pieceImage, setPieceImage ] = useState(null);
+
+    // console.log('gameBoard[position]: ', gameBoard[position])
 
     const checkIfMovable = () =>{
 
@@ -44,12 +48,16 @@ export default function BoardPiece(props) {
         }
     }
 
+    useEffect(() => {
+      setPieceImage(gameBoard[position])
+    }, [gameBoard])
+
     return (
             <div
               onClick={handleMove}
               className="flex justify-center items-center w-125 h-125 border border-black hover:border-red-500"
             >
-              <img src={gameBoard[position]} />
+              {gameBoard[position] ? <img src={pieceImage} /> : null}
             </div>
           );
 }
