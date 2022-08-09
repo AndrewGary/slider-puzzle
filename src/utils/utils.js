@@ -42,6 +42,7 @@ export const cutImageUp = (index) => {
   }
   splitImage[15] = null;
 }
+//testing
 const image = new Image();
   image.onload = onloadFunction;
   image.src = arrayOfImages[index];
