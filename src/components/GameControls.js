@@ -47,8 +47,6 @@ export default function GameControls(props) {
     setGameBoard(returnArray);
     
     setTime(0);
-
-
   }
 
   return (
@@ -57,13 +55,13 @@ export default function GameControls(props) {
         gameActive ?
         <button
           onClick={handleRestartGame}
-          className="border border-gray-300 rounded-md"
+          className="border border-gray-300 rounded-md px-20 py-10"
         >
           Restart Game
         </button> :
         <button
         onClick={handleStartGame}
-        className="border border-gray-300 rounded-md"
+        className="border border-gray-300 rounded-md px-20 py-10"
       >
         Start Game
       </button>

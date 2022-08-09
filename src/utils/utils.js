@@ -4,6 +4,7 @@ import cat from '../images/Cat.png';
 import colorful from '../images/Colorful.png';
 import samurai from '../images/Samurai.png';
 
+// export const arrayOfImages = [{img: wolf, index: 0}, {img: cat, index: 1}, {img: colorful, index: 2}, {img: samurai, index: 3}];
 export const arrayOfImages = [wolf, cat, colorful, samurai];
 
 export const checkIfGameIsOver = (gameBoard) => {
@@ -15,7 +16,7 @@ export const checkIfGameIsOver = (gameBoard) => {
 return true;
 }
 
-export const cutImageUp = (imageToCut) => {
+export const cutImageUp = (index) => {
 
   const splitImage = [];
 
@@ -44,7 +45,7 @@ export const cutImageUp = (imageToCut) => {
 }
 const image = new Image();
   image.onload = onloadFunction;
-  image.src = wolf;
+  image.src = arrayOfImages[index];
   return splitImage
 };
 

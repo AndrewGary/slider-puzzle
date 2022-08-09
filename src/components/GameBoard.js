@@ -1,4 +1,4 @@
-import React, { useEffect, useContext} from "react";
+import React, { useEffect, useContext, useState} from "react";
 import { solution } from "../utils/utils";
 import GameControls from "./GameControls";
 import { Context } from "../Store";
@@ -8,14 +8,17 @@ import wolf from "../images/Wolf.png";
 import { checkIfGameIsOver } from "../utils/utils";
 import Title from "./Title";
 import { arrayOfImages } from "../utils/utils";
+import ImageSelection from "./ImageSelection";
+import SolutionImage from "./SolutionImage";
 
 export default function GameBoard(props) {
   const { gameActive, setGameActive, time, setTime } = props;
 
   const [gameBoard, setGameBoard] = useContext(Context);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   const handleImageSelection = e => {
-    console.log(this);
+    console.log(e)
   }
 
   useEffect(() => {
@@ -25,24 +28,25 @@ export default function GameBoard(props) {
   }, [gameBoard]);
 
   useEffect(() => {
-    const idk = cutImageUp();
+    const idk = cutImageUp(selectedImage);
     setGameBoard(idk);
-  }, []);
+  }, [selectedImage]);
 
   return (
-    <div className="flex flex-col w-full h-screen items-center justify-evenly border border-red-500">
+    <div className="flex flex-col w-full h-screen items-center justify-evenly">
         <Title />
-      <div className="flex w-full border border-green-500 justify-evenly">
+      <div className="flex w-full justify-evenly">
         <div className="flex flex-wrap w-500 h-500 ">
           {solution.map((BoardPiece) => {
             return BoardPiece;
           })}
         </div>
-        <div className="flex flex-wrap w-500, h-500 justify-evenly items-center">
-            {arrayOfImages.map(image => {
-                return <img onClick={handleImageSelection} className="w-2/5 h-2/5" src={image}  />
+        {/* <div className="flex flex-wrap w-500, h-500 justify-evenly items-center">
+            {arrayOfImages.map((image, index) => {
+                return <img onClick={handleImageSelection} className="w-2/5 h-2/5" src={image.img}  />
             })}
-        </div>
+        </div> */}
+        {selectedImage !== null ? <SolutionImage image={arrayOfImages[selectedImage]} setSelectedImage={setSelectedImage}/> : <ImageSelection setSelectedImage={setSelectedImage}/>}
       </div>
       <div>
         <GameControls
