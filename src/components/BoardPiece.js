@@ -55,7 +55,7 @@ export default function BoardPiece(props) {
     return (
             <div
               onClick={handleMove}
-              className="flex justify-center items-center w-125 h-125 border border-black hover:border-red-500"
+              className="sm:w-100 sm:h-100 flex justify-center items-center w-125 h-125 border border-black hover:border-red-500"
             >
               {gameBoard[position] ? <img src={pieceImage} /> : null}
             </div>

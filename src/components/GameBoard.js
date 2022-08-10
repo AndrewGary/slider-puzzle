@@ -40,8 +40,8 @@ export default function GameBoard(props) {
   return (
     <div className="flex flex-col w-full h-screen items-center justify-evenly bg-gradient-to-t from-blue-100 via-blue-300 to-blue-500">
       <Title selectedImage={selectedImage} />
-      <div className="flex w-full justify-center">
-        <div className="flex flex-wrap w-500 h-500 mx-4">
+      <div className="sm:flex-col sm:items-center flex w-full justify-center">
+        <div className="sm:w-400 sm:h-400 flex flex-wrap w-500 h-500 mx-4">
           {solution.map((BoardPiece) => {
             return BoardPiece;
           })}
