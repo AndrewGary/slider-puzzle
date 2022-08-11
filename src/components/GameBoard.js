@@ -73,6 +73,7 @@ export default function GameBoard(props) {
         )}
       </div>
       {/* <div className="w-1/2"> */}
+      <div>
         <GameControls
           gameMessage={gameMessage}
           setGameMessage={setGameMessage}
@@ -85,6 +86,7 @@ export default function GameBoard(props) {
           setTime={setTime}
         />
         <Timer gameActive={gameActive} time={time} setTime={setTime} />
+      </div>
         {/* This button is for testing what happens when someone wins */}
         {/* <button
           onClick={() => {
