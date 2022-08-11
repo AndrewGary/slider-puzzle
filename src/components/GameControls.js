@@ -71,15 +71,23 @@ export default function GameControls(props) {
       <h2 className="sm:text-xl sm:font-semibold flex justify-center mb-4 text-3xl text-red-500">{gameMessage}</h2>
       {
         time > 0 ?
-        <button
-          onClick={handleRestartGame}
-          className="sm:px-4 sm:py-2 sm:text-sm border border-gray-300 rounded-md px-20 py-10 text-4xl hover:border-gray-500 w-2/5"
-        >
-          Restart Game
-        </button> :
+        // <button
+        //   onClick={handleRestartGame}
+        //   className="sm:px-4 sm:py-2 sm:text-sm border border-gray-300 rounded-md px-20 py-10 text-4xl hover:border-gray-500 w-2/5"
+        // >
         <button
         onClick={handleStartGame}
-        className="sm:px-4 sm:py-2 sm:text-sm border border-gray-300 rounded-md px-20 py-10 text-4xl hover:border-gray-500 w-2/5"
+        className='border border-slate-500 rounded-md px-4'
+      >
+          Restart Game
+        </button> :
+      //   <button
+      //   onClick={handleStartGame}
+      //   className="sm:px-4 sm:py-2 sm:text-sm border border-gray-300 rounded-md px-20 py-10 text-4xl hover:border-gray-500 w-2/5"
+      // >
+      <button
+        onClick={handleStartGame}
+        className='border border-slate-500 rounded-md px-4'
       >
         Start Game
       </button>

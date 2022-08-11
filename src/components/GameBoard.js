@@ -38,9 +38,9 @@ export default function GameBoard(props) {
   }, [selectedImage]);
 
   return (
-    <div className="flex flex-col w-full h-screen items-center justify-evenly bg-gradient-to-t from-blue-100 via-blue-300 to-blue-500">
+    <div className="flex flex-col w-full h-screen items-center bg-gradient-to-t from-blue-100 via-blue-300 to-blue-500">
       <Title selectedImage={selectedImage} />
-      <div className="sm:flex-col sm:items-center flex w-full justify-center">
+      <div className="sm:flex-col sm:items-center flex w-full justify-center my-4">
       {/* <div className="sm:flex-col sm:items-center flex w-full justify-center"> */}
         {/* <div className={selectedImage === null ? 'hidden' : 'sm:visible sm:flex sm:flex-wrap sm:w-400 sm:h-400 hidden'}>
           {solution.map((BoardPiece) => {
