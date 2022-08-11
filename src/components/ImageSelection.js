@@ -24,6 +24,7 @@ export default function ImageSelection(props) {
     
   return (
     <div className='sm:w-400 sm:justify-evenly flex flex-wrap w-500 mx-4'>
+    {/* // <div className='sm:w-400 sm:justify-evenly flex flex-wrap w-500 mx-4'> */}
         {arrayOfImages.map((image, index) => {
             return <SelectionOption setGameMessage={setGameMessage} setSelectedImage={setSelectedImage} image={image} index={index} />
         })}

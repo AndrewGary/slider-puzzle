@@ -26,7 +26,7 @@ export default function GameBoard(props) {
   useEffect(() => {
     if (selectedImage !== null) {
       if (checkIfGameIsOver(gameBoard, selectedImage) === true && time > 0) {
-        setGameMessage('You win!!!')
+        setGameMessage("You win!!!");
         setGameActive(false);
       }
     }
@@ -41,7 +41,21 @@ export default function GameBoard(props) {
     <div className="flex flex-col w-full h-screen items-center justify-evenly bg-gradient-to-t from-blue-100 via-blue-300 to-blue-500">
       <Title selectedImage={selectedImage} />
       <div className="sm:flex-col sm:items-center flex w-full justify-center">
-        <div className="sm:w-400 sm:h-400 flex flex-wrap w-500 h-500 mx-4">
+      {/* <div className="sm:flex-col sm:items-center flex w-full justify-center"> */}
+        {/* <div className={selectedImage === null ? 'hidden' : 'sm:visible sm:flex sm:flex-wrap sm:w-400 sm:h-400 hidden'}>
+          {solution.map((BoardPiece) => {
+            return BoardPiece;
+          })}
+        </div> */}
+        
+        {/* <div className="hidden sm:flex flex-wrap w-400 h-400 mx-4"> */}
+        <div className={selectedImage === null ? "hidden" : "hidden sm:flex flex-wrap w-400 h-400 mx-4"}>
+          {solution.map((BoardPiece) => {
+            return BoardPiece;
+          })}
+        </div>
+
+        <div className="sm:hidden flex flex-wrap w-500 h-500 mx-4">
           {solution.map((BoardPiece) => {
             return BoardPiece;
           })}
@@ -58,7 +72,7 @@ export default function GameBoard(props) {
           />
         )}
       </div>
-      <div className="w-1/2">
+      {/* <div className="w-1/2"> */}
         <GameControls
           gameMessage={gameMessage}
           setGameMessage={setGameMessage}
@@ -79,7 +93,7 @@ export default function GameBoard(props) {
         >
           solve
         </button> */}
-      </div>
+      {/* </div> */}
     </div>
   );
 }
