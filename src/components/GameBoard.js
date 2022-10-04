@@ -4,13 +4,11 @@ import GameControls from "./GameControls";
 import { Context } from "../Store";
 import Timer from "./Timer";
 import { cutImageUp } from "../utils/utils";
-import wolf from "../images/Wolf.png";
 import { checkIfGameIsOver } from "../utils/utils";
 import Title from "./Title";
 import { arrayOfImages } from "../utils/utils";
 import ImageSelection from "./ImageSelection";
 import SolutionImage from "./SolutionImage";
-import { winningArrays } from "../utils/utils";
 
 export default function GameBoard(props) {
   const { gameActive, setGameActive, time, setTime } = props;
@@ -18,10 +16,6 @@ export default function GameBoard(props) {
   const [gameBoard, setGameBoard] = useContext(Context);
   const [selectedImage, setSelectedImage] = useState(null);
   const [gameMessage, setGameMessage] = useState("");
-
-  const handleImageSelection = (e) => {
-    console.log(e);
-  };
 
   useEffect(() => {
     if (selectedImage !== null) {
@@ -41,14 +35,6 @@ export default function GameBoard(props) {
     <div className="flex flex-col w-full h-screen items-center bg-gradient-to-t from-blue-100 via-blue-300 to-blue-500">
       <Title selectedImage={selectedImage} />
       <div className="sm:flex-col sm:items-center flex w-full justify-center my-4">
-      {/* <div className="sm:flex-col sm:items-center flex w-full justify-center"> */}
-        {/* <div className={selectedImage === null ? 'hidden' : 'sm:visible sm:flex sm:flex-wrap sm:w-400 sm:h-400 hidden'}>
-          {solution.map((BoardPiece) => {
-            return BoardPiece;
-          })}
-        </div> */}
-        
-        {/* <div className="hidden sm:flex flex-wrap w-400 h-400 mx-4"> */}
         <div className={selectedImage === null ? "hidden" : "hidden sm:flex flex-wrap w-400 h-400 mx-4"}>
           {solution.map((BoardPiece) => {
             return BoardPiece;
@@ -87,15 +73,6 @@ export default function GameBoard(props) {
         />
         <Timer gameActive={gameActive} time={time} setTime={setTime} />
       </div>
-        {/* This button is for testing what happens when someone wins */}
-        {/* <button
-          onClick={() => {
-            setGameBoard(winningArrays[1]);
-          }}
-        >
-          solve
-        </button> */}
-      {/* </div> */}
     </div>
   );
 }
