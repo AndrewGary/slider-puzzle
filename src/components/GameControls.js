@@ -76,7 +76,7 @@ export default function GameControls(props) {
         //   className="sm:px-4 sm:py-2 sm:text-sm border border-gray-300 rounded-md px-20 py-10 text-4xl hover:border-gray-500 w-2/5"
         // >
         <button
-        onClick={handleStartGame}
+        onClick={handleRestartGame}
         className='border border-slate-500 rounded-md px-4'
       >
           Restart Game
